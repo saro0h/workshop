@@ -1,0 +1,8 @@
+Smoovio\Bundle\CoreBundle\Entity\Director:
+  type: entity
+  table: director
+  manyToMany:
+    movies:
+      targetEntity: Movie
+      mappedBy: directors
+      fetch: EXTRA_LAZY

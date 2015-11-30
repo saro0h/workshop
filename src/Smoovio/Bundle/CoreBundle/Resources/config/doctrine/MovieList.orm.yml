@@ -1,0 +1,16 @@
+Smoovio\Bundle\CoreBundle\Entity\MovieList:
+  type: entity
+  table: movielist
+  id:
+    id:
+      type: integer
+      generator: { strategy: AUTO }
+  fields:
+    title:
+      type: string
+    slug:
+      type: string
+
+  manyToMany:
+    movies:
+      targetEntity: Movie

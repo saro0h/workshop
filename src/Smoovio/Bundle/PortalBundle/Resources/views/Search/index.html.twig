@@ -1,0 +1,26 @@
+{% extends 'SmoovioPortalBundle::layout.html.twig' %}
+
+{% block content %}
+<div class="search" ng-app="Smoovio" ng-controller="SearchCtrl">
+  <form class="search-form">
+    <input
+      id="search-term"
+      class="form-control input-lg"
+      type="text"
+      placeholder="Search"
+      ng-model="term"
+      ng-change="change()">
+  </form>
+
+  <ul class="list-group search-results">
+    <li class="list-group-item" ng-repeat="result in search.results">
+      <a href="[[ result.html_url ]]">[[ result.title ]]</a>
+    </li>
+  </ul>
+</div>
+{% endblock %}
+
+{% block javascripts %}
+{% include 'SmoovioPortalBundle::globals.html.twig' %}
+<script src="{{ asset('/js/application.js') }}"></script>
+{% endblock %}

@@ -1,0 +1,9 @@
+parameters:
+    database_driver: pdo_mysql
+    database_host: 127.0.0.1
+    database_port: null
+    database_name: sf2c15_rest
+    database_user: root
+    database_password: ~
+    locale: en
+    secret: ThisTokenIsNeitherSecretButNeededForInsight

@@ -1,0 +1,59 @@
+{% extends 'SmoovioPortalBundle::layout.html.twig' %}
+
+{% block content %}
+    <div class="movie-details">
+        <h2 class="movie-title">{{ movie.title }}</h2>
+        <div class="movie-metadata">
+            <table class="metadata table table-bordered">
+                <tr><th>Duration:</th><td>{{ movie.duration / 60 }} min</td></tr>
+                <tr><th>Release:</th><td>{{ movie.releaseDate | date("F dS Y") }}</td></tr>
+                <tr>
+                    <th>Genre:</th>
+                    <td>
+                        <a href="{{ path('movies_by_genre', { 'slug': movie.genre.slug }) }}">
+                            {{ movie.genre.title }}
+                        </a>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Director(s):</th>
+                    <td>
+                        {% for director in movie.directors %}
+                            <div class="col-md-8">
+                                <a href="{{ path('movies_by_director', { id: director.id }) }}">{{ director.name }}</a>
+                            </div>
+                        {% endfor %}
+                    </td>
+                </tr>
+            </table>
+            <p class="movie-description">{{ movie.description }}</p>
+            <div class="panel-group" id="accordion">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseActors">
+                                Actors <span class="glyphicon glyphicon-chevron-down pull-right"></span>
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapseActors" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            <table class="table table-striped">
+                                {% for role in movie.roles %}
+                                    <tr>
+                                        <th>{{ role.character }}</th>
+                                        <td>
+                                            <a href="{{ path('movies_by_actor', { id: role.actor.id }) }}">
+                                                {{ role.actor.name }}
+                                            </a>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,9 @@
+{% extends 'SmoovioPortalBundle::layout.html.twig' %}
+
+{% block content %}
+    {% for genre in genres %}
+        <div class="genre col-md-3">
+            <a href="{{ path('movies_by_genre', { slug: genre.slug }) }}">{{ genre.title }}</a>
+        </div>
+    {% endfor %}
+{% endblock %}

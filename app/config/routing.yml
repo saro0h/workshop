@@ -1,0 +1,13 @@
+#nelmio_api_doc:
+#    resource: "@NelmioApiDocBundle/Resources/config/routing.yml"
+#    prefix:   /api/doc
+
+smoovio_api:
+    resource: "@SmoovioApiBundle/Controller/"
+    type:     annotation
+    prefix:   /api
+
+smoovio_portal:
+    resource: "@SmoovioPortalBundle/Resources/config/routing.yml"
+    prefix:   /
+

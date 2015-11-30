@@ -1,0 +1,12 @@
+{% extends 'SmoovioPortalBundle::layout.html.twig' %}
+
+{% block content %}
+    {% for movie in movies %}
+        <div class="movie">
+            <h2 class="movie-title">
+                <a href="{{ path('movie_detail', { 'id': movie.id, 'slug': movie.slug }) }}">{{ movie.title }}</a>
+            </h2>
+            <p class="movie-description">{{ movie.description }}</p>
+        </div>
+    {% endfor %}
+{% endblock %}

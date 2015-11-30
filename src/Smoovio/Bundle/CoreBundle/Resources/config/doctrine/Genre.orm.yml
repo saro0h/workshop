@@ -1,0 +1,13 @@
+Smoovio\Bundle\CoreBundle\Entity\Genre:
+  type: entity
+  repositoryClass: Smoovio\Bundle\CoreBundle\Repository\GenreRepository
+  table: genre
+  id:
+    id:
+      type: integer
+      generator: { strategy: AUTO }
+  fields:
+    title:
+      type: string
+    slug:
+      type: string

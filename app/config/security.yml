@@ -1,0 +1,42 @@
+security:
+    encoders:
+        Smoovio\Bundle\CoreBundle\Entity\User: sha512
+
+    role_hierarchy:
+        ROLE_ADMIN:       ROLE_USER
+        ROLE_SUPER_ADMIN: [ROLE_USER, ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
+
+    providers:
+        main:
+            entity:
+                class: Smoovio\Bundle\CoreBundle\Entity\User
+                property: username
+
+    firewalls:
+        dev:
+            pattern:  ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+        api:
+            pattern: ^/api
+            security: false
+        main:
+            pattern:   ^/
+            provider: main
+            form_login:
+                login_path: auth_login
+                check_path: auth_login_check
+                csrf_provider: form.csrf_provider
+            logout:
+                path: auth_logout
+                target: /
+            anonymous: ~
+            remember_me:
+                name: SMOOVIO_REMEMBERME
+                key: %secret%
+                lifetime: 31536000
+                path: /
+                domain: ~
+
+    access_control:
+        - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/profile, roles: IS_AUTHENTICATED_REMEMBERED }

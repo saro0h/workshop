@@ -1,0 +1,13 @@
+{
+    "count": {{ movies|length }},
+    "results": [
+        {% for movie in movies %}
+        {
+            "id": "{{ movie.id }}",
+            "title": "{{ movie.title }}",
+            "type": "movie",
+            "html_url": "{{ url('movie_detail', { 'id': movie.id, 'slug': movie.slug }) }}"
+        }{% if not loop.last %},{% endif %}
+        {% endfor %}
+    ]
+}

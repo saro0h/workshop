@@ -1,0 +1,34 @@
+Smoovio\Bundle\CoreBundle\Entity\Movie:
+  type: entity
+  table: movie
+  repositoryClass: Smoovio\Bundle\CoreBundle\Repository\MovieRepository
+  id:
+    id:
+      type: integer
+      generator: { strategy: AUTO }
+  fields:
+    title:
+      type: string
+    slug:
+      type: string
+    description:
+      type: text
+    duration:
+      type: integer
+    releaseDate:
+      type: date
+    storageKey:
+      type: string
+      nullable: true
+  manyToOne:
+    genre:
+      targetEntity: Genre
+  manyToMany:
+    directors:
+      targetEntity: Director
+      inversedBy: movies
+      fetch: EXTRA_LAZY
+  oneToMany:
+    roles:
+      targetEntity: Role
+      mappedBy:     movie

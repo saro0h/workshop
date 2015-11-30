@@ -1,0 +1,21 @@
+Smoovio\Bundle\CoreBundle\Entity\Role:
+  type: entity
+  table: role
+  id:
+    id:
+      type: integer
+      generator:
+        strategy: AUTO
+  fields:
+    character:
+      type: string
+      column: "`character`"
+      nullable: true
+  manyToOne:
+    actor:
+      targetEntity: Actor
+      fetch: EAGER
+    movie:
+      targetEntity: Movie
+      fetch: EAGER
+      inversedBy: roles

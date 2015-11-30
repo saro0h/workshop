@@ -1,0 +1,28 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        <div class="header">
+            <ul class="nav nav-pills pull-right">
+                <li class="active"><a href="#">Home</a></li>
+                <li><a href="{{ path('genres') }}">Genres</a></li>
+                <li><a href="{{ path('search') }}">Search</a></li>
+                {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                    <li><a href="{{ path('auth_logout') }}">Logout</a></li>
+                {% else %}
+                    <li><a href="{{ path('auth_login') }}">Login</a></li>
+                    <li><a href="{{ path('auth_signup') }}">Sign Up</a></li>
+                {% endif %}
+            </ul>
+            <h3 class="text-muted"><a href="{{ path('portal_home') }}">smoov.io</a></h3>
+        </div>
+
+        <div class="marketing">
+            {% block content %}{% endblock %}
+        </div>
+
+        <div class="footer">
+            <p>&copy; Smoov.io 2013</p>
+        </div>
+    </div>
+{% endblock %}

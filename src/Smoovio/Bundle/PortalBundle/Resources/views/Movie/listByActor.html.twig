@@ -1,0 +1,26 @@
+{% extends 'SmoovioPortalBundle::layout.html.twig' %}
+
+{% block content %}
+    <h2>Movies with {{ actor.name}}</h2>
+
+    <div class="panel-group" id="accordion">
+        {% for movie in movies %}
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapse{{ loop.index0 }}">
+                            {{ movie.title }}
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapse{{ loop.index0 }}" class="panel-collapse collapse {% if loop.first %}in{% endif %}">
+                    <div class="panel-body">
+                        {{ movie.description }}<br />
+                        <br />
+                        <a href="{{ path('movie_detail', { 'id': movie.id, 'slug': movie.slug }) }}">more&hellip;</a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

@@ -1,0 +1,3 @@
+Smoovio\Bundle\CoreBundle\Entity\Actor:
+  type: entity
+  table: actor
